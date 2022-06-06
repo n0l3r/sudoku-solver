@@ -29,11 +29,9 @@ bool solver(matrix &board) {
     int row, col;
     bool isZero = 0;
 
-    for(int i = 0; i < board.size(); i++) {
-        for(int j = 0; j < board.size(); j++) {
-            if(board[i][j] == 0) {
-                row = i;
-                col = j;
+    for(row = 0; row < board.size(); row++) {
+        for(col = 0; col < board.size(); col++) {
+            if(board[row][col] == 0) {
                 isZero = true;
                 break;
             }
@@ -59,11 +57,14 @@ bool solver(matrix &board) {
 
 void printBoard(matrix &board) {
     for (int i = 0; i < SIZE; i++) {
+        if(i % 3 == 0) cout << "-------------------------" << endl;
         for (int j = 0; j < SIZE; j++) {
+            if(j % 3 == 0) cout << "| ";
             cout << board[i][j] << " ";
         }
-        cout << endl;
+        cout << "|" << endl;
     }
+    cout << "-------------------------" << endl;
 }
 
 int main() {
@@ -95,7 +96,7 @@ int main() {
     cin >> _outFileName;
 
     freopen(_inFileName.c_str(), "r", stdin); // membuka file input
-    freopen(_outFileName.c_str(), "w", stdout); // membuka file output
+    // freopen(_outFileName.c_str(), "w", stdout); // membuka file output
 
     // memasukkan isi board dari file input
     for(int i = 0; i < SIZE; i++) {
@@ -109,7 +110,7 @@ int main() {
     // mencetak isi board ke file output
     printBoard(board);
     fclose(stdin); // menutup file input
-    fclose(stdout); // menutup file output
+    // fclose(stdout); // menutup file output
     return 0;
     
 } 
